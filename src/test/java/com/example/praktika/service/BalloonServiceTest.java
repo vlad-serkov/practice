@@ -1,7 +1,7 @@
 package com.example.praktika.service;
 
 import com.example.praktika.domain.Balloon;
-import com.example.praktika.exceptionhandler.exception.NotFoundException;
+import com.example.praktika.exceptionhandler.exception.SerialNotFoundException;
 import com.example.praktika.repository.BalloonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,17 +17,17 @@ class BalloonServiceTest {
     }
 
     @Test
-    void openValve() throws NotFoundException {
+    void openValve() throws SerialNotFoundException {
         balloonService.openValve(2);
     }
 
     @Test
-    void setSubstance() throws NotFoundException {
+    void setSubstance() throws SerialNotFoundException {
         balloonService.setSubstance(2,"Водород", 56.6);
     }
 
     @Test
-    void save() {
+    void save() throws SerialNotFoundException {
         balloonService.save(new Balloon(5,47,"Водород", 56.6));
     }
 
@@ -39,12 +39,12 @@ class BalloonServiceTest {
     }
 
     @Test
-    void deleteById() throws NotFoundException {
+    void deleteById() throws SerialNotFoundException {
         balloonService.deleteById(51345);
     }
 
     @Test
-    void update() throws NotFoundException {
+    void update() throws SerialNotFoundException {
         balloonService.update(2,new Balloon(2,4,"Водород", 566.6));
     }
 

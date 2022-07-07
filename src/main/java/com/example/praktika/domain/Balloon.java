@@ -15,5 +15,4 @@ public class Balloon {
     private double capacity;
     private String substance;
     private double pressure;
-    public Balloon() {}
 }

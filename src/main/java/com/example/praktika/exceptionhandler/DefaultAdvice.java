@@ -1,6 +1,6 @@
 package com.example.praktika.exceptionhandler;
 
-import com.example.praktika.exceptionhandler.exception.NotFoundException;
+import com.example.praktika.exceptionhandler.exception.SerialNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class DefaultAdvice extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<Response> handleException(NotFoundException e) {
+    @ExceptionHandler(SerialNotFoundException.class)
+    public ResponseEntity<Response> handleException(SerialNotFoundException e) {
         Response response = new Response(e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

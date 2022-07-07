@@ -1,7 +1,7 @@
 package com.example.praktika.service;
 
 import com.example.praktika.domain.Balloon;
-import com.example.praktika.exceptionhandler.exception.NotFoundException;
+import com.example.praktika.exceptionhandler.exception.SerialNotFoundException;
 import com.example.praktika.repository.BalloonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import java.util.List;
 public class BalloonService {
     private BalloonRepository balloonRepository;
 
-    public String openValve(int serial) throws NotFoundException {
+    public String openValve(int serial) throws SerialNotFoundException {
         if (!balloonRepository.selectExistBalloonById(serial)) {
-            throw new NotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
+            throw new SerialNotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
         }
         Balloon balloon = balloonRepository.getById(serial);
         balloon.setPressure(0);
@@ -24,13 +24,13 @@ public class BalloonService {
         return String.format("Balloon with serial: %s now has Pressure: 0 , Substance: Oxygen", serial);
     }
 
-    public String setSubstance(int serial, String substance, double pressure) throws NotFoundException {
+    public String setSubstance(int serial, String substance, double pressure) throws SerialNotFoundException {
         if (!balloonRepository.selectExistBalloonById(serial)) {
-            throw new NotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
+            throw new SerialNotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
         }
         final Balloon balloon = balloonRepository.getById(serial);
         if(balloon.getPressure()!=0) {
-            throw new NotFoundException(String.format("Balloon with serial: %s is already has Substance: %s with Pressure: %s", serial, balloon.getSubstance(), balloon.getPressure()));
+            throw new SerialNotFoundException(String.format("Balloon with serial: %s is already has Substance: %s with Pressure: %s", serial, balloon.getSubstance(), balloon.getPressure()));
         }
 
         balloon.setSubstance(substance);
@@ -40,9 +40,9 @@ public class BalloonService {
     }
 
 
-    public String save(Balloon balloon) {
+    public String save(Balloon balloon) throws SerialNotFoundException {
         if (balloonRepository.selectExistBalloonById(balloon.getSerial())) {
-            throw new IllegalStateException(String.format("Balloon with serial: %s is already exist", balloon.getSerial()));
+            throw new SerialNotFoundException(String.format("Balloon with serial: %s is already exist", balloon.getSerial()));
         }
         balloonRepository.save(balloon);
         return String.format("Balloon with serial: %s created", balloon.getSerial());
@@ -52,21 +52,20 @@ public class BalloonService {
         return balloonRepository.findAll();
     }
 
-    public String deleteById(int serial) throws NotFoundException {
+    public String deleteById(int serial) throws SerialNotFoundException {
         if (!balloonRepository.selectExistBalloonById(serial)) {
-            // throw new IllegalStateException(String.format("Balloon with serial: %s doesn't exist", serial));
-            throw new NotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
+            throw new SerialNotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
         }
         balloonRepository.deleteById(serial);
         return String.format("Balloon with serial: %s deleted", serial);
     }
 
-    public String update(int serial,Balloon balloon) throws NotFoundException {
+    public String update(int serial,Balloon balloon) throws SerialNotFoundException {
         if (!balloonRepository.selectExistBalloonById(serial)) {
-            throw new NotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
+            throw new SerialNotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
         }
         if (balloon.getSerial()!= serial) {
-            throw new NotFoundException(String.format("You can't change serial", balloon.getSerial()));
+            throw new SerialNotFoundException(String.format("You can't change serial: %s", balloon.getSerial()));
         }
         balloonRepository.update(balloon);
         return String.format("Balloon with serial: %s updated", balloon.getSerial());

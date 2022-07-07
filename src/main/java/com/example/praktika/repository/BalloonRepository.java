@@ -43,10 +43,10 @@ public class BalloonRepository {
         }
         for (CSVRecord record : records) {
             list.add(new Balloon(
-                    Integer.valueOf(record.get(0)),
-                    Double.valueOf(record.get(1)),
+                    Integer.parseInt(record.get(0)),
+                    Double.parseDouble(record.get(1)),
                     record.get(2),
-                    Double.valueOf(record.get(3))
+                    Double.parseDouble(record.get(3))
             ));
         }
         return list;
