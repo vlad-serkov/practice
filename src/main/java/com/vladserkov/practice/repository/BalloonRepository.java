@@ -1,6 +1,6 @@
-package com.example.praktika.repository;
+package com.vladserkov.practice.repository;
 
-import com.example.praktika.domain.Balloon;
+import com.vladserkov.practice.domain.Balloon;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Repository;

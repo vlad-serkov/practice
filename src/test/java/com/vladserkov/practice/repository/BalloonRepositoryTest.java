@@ -1,6 +1,6 @@
-package com.example.praktika.repository;
+package com.vladserkov.practice.repository;
 
-import com.example.praktika.domain.Balloon;
+import com.vladserkov.practice.domain.Balloon;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -9,13 +9,13 @@ import java.util.List;
 class BalloonRepositoryTest {
 
     @Test
-    void save() throws IOException {
+    void save() {
         BalloonRepository balloonRepository = new BalloonRepository();
         balloonRepository.save(new Balloon(2,24,"Alina",90));
     }
 
     @Test
-    void findAll() throws IOException {
+    void findAll() {
         BalloonRepository balloonRepository = new BalloonRepository();
         final List<Balloon> all = balloonRepository.findAll();
         for (Balloon balloon: all

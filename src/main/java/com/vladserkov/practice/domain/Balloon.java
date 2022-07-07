@@ -1,4 +1,5 @@
-package com.example.praktika.domain;
+package com.vladserkov.practice.domain;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

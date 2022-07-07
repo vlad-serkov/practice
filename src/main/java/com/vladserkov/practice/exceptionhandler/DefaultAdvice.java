@@ -1,6 +1,6 @@
-package com.example.praktika.exceptionhandler;
+package com.vladserkov.practice.exceptionhandler;
 
-import com.example.praktika.exceptionhandler.exception.SerialNotFoundException;
+import com.vladserkov.practice.exceptionhandler.exception.SerialNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

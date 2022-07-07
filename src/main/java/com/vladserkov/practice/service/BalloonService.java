@@ -1,8 +1,8 @@
-package com.example.praktika.service;
+package com.vladserkov.practice.service;
 
-import com.example.praktika.domain.Balloon;
-import com.example.praktika.exceptionhandler.exception.SerialNotFoundException;
-import com.example.praktika.repository.BalloonRepository;
+import com.vladserkov.practice.domain.Balloon;
+import com.vladserkov.practice.exceptionhandler.exception.SerialNotFoundException;
+import com.vladserkov.practice.repository.BalloonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

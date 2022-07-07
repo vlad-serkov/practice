@@ -1,4 +1,4 @@
-package com.example.praktika.exceptionhandler;
+package com.vladserkov.practice.exceptionhandler;
 
 public class Response {
 

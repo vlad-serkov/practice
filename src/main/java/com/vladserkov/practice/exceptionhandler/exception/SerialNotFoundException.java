@@ -1,4 +1,4 @@
-package com.example.praktika.exceptionhandler.exception;
+package com.vladserkov.practice.exceptionhandler.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,8 +1,9 @@
-package com.example.praktika.controller;
+package com.vladserkov.practice.controller;
 
-import com.example.praktika.domain.Balloon;
-import com.example.praktika.exceptionhandler.exception.SerialNotFoundException;
-import com.example.praktika.service.BalloonService;
+
+import com.vladserkov.practice.domain.Balloon;
+import com.vladserkov.practice.exceptionhandler.exception.SerialNotFoundException;
+import com.vladserkov.practice.service.BalloonService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
