@@ -13,7 +13,7 @@ import java.util.Map;
 @RestController
 @AllArgsConstructor
 @RequestMapping("balloons")
-public class BalloonController {
+public class BalloonController  {
     private BalloonService balloonService;
 
 
@@ -50,6 +50,11 @@ public class BalloonController {
     @PutMapping("/{serial}/set-substance")
     public String setSubstance(@PathVariable int serial, @RequestBody Map<String,String> map) throws SerialNotFoundException {
         return balloonService.setSubstance(serial, map.get("substance"), Double.parseDouble(map.get("pressure")));
+    }
+
+    @GetMapping("/information")
+    public String getInformation() {
+        return String.format("Проект выполнил Вадислав Серков группа УВА-211. Количество сущностей: %s", balloonService.getBalloonsCount());
     }
 
 
