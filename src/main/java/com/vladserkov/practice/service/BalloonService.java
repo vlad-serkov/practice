@@ -71,9 +71,9 @@ public class BalloonService {
         return String.format("Balloon with serial: %s updated", balloon.getSerial());
     }
 
-    public Balloon getBalloonBySerial(int serial) {
+    public Balloon getBalloonBySerial(int serial) throws SerialNotFoundException {
         if (!balloonRepository.selectExistBalloonById(serial)) {
-            throw new IllegalStateException(String.format("Balloon with serial: %s doesn't exist", serial));
+            throw new SerialNotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
         }
         return balloonRepository.getById(serial);
     }

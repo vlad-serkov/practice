@@ -38,7 +38,7 @@ public class BalloonController  {
     }
 
     @GetMapping("/{serial}")
-    public Balloon getBalloonBySerial(@PathVariable int serial) {
+    public Balloon getBalloonBySerial(@PathVariable int serial) throws SerialNotFoundException {
         return balloonService.getBalloonBySerial(serial);
     }
 
