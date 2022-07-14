@@ -49,7 +49,7 @@ class BalloonServiceTest {
     }
 
     @Test
-    void getBalloonBySerial() {
+    void getBalloonBySerial() throws SerialNotFoundException {
         final Balloon balloon = balloonService.getBalloonBySerial(2);
         System.out.println(balloon);
     }
