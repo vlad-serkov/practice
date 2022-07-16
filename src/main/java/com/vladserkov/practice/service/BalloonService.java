@@ -29,7 +29,7 @@ public class BalloonService {
             throw new SerialNotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
         }
         final Balloon balloon = balloonRepository.getById(serial);
-        if(balloon.getPressure()!=0) {
+        if (balloon.getPressure() != 0) {
             throw new SerialNotFoundException(String.format("Balloon with serial: %s is already has Substance: %s with Pressure: %s", serial, balloon.getSubstance(), balloon.getPressure()));
         }
 
@@ -60,11 +60,11 @@ public class BalloonService {
         return String.format("Balloon with serial: %s deleted", serial);
     }
 
-    public String update(int serial,Balloon balloon) throws SerialNotFoundException {
+    public String update(int serial, Balloon balloon) throws SerialNotFoundException {
         if (!balloonRepository.selectExistBalloonById(serial)) {
             throw new SerialNotFoundException(String.format("Balloon with serial: %s doesn't exist", serial));
         }
-        if (balloon.getSerial()!= serial) {
+        if (balloon.getSerial() != serial) {
             throw new SerialNotFoundException(String.format("You can't change serial: %s", serial));
         }
         balloonRepository.update(balloon);

@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class BalloonRepository {
     private final String PATH_TO_FILE = "src/main/resources/data.csv";
 
-    public void save(Balloon balloon){
+    public void save(Balloon balloon) {
         File csvOutputFile = new File(PATH_TO_FILE);
         try (PrintWriter pw = new PrintWriter(new FileWriter(csvOutputFile, true))) {
             pw.println(convertToCSV(balloon));
@@ -50,7 +50,7 @@ public class BalloonRepository {
         return list;
     }
 
-    public void deleteById(int serial)  {
+    public void deleteById(int serial) {
         final List<Balloon> listAfter = findAll()
                 .stream()
                 .filter(balloon -> balloon.getSerial() != serial)
@@ -58,9 +58,9 @@ public class BalloonRepository {
         saveAllByOverwritingFile(listAfter);
     }
 
-    public void update(Balloon balloon){
+    public void update(Balloon balloon) {
         final List<Balloon> balloons = findAll();
-        for (int i = 0; i<balloons.size(); i++) {
+        for (int i = 0; i < balloons.size(); i++) {
             if (balloons.get(i).getSerial() == balloon.getSerial()) {
                 balloons.set(i, balloon);
                 break;
@@ -71,16 +71,16 @@ public class BalloonRepository {
 
     public Balloon getById(int serial) {
         final List<Balloon> all = findAll();
-        for (Balloon balloon: all
-             ) {
+        for (Balloon balloon : all
+        ) {
             if (balloon.getSerial() == serial) return balloon;
         }
         throw new IllegalStateException("НЕВОЗМОЖНО");
     }
 
-    public boolean selectExistBalloonById(int id){
+    public boolean selectExistBalloonById(int id) {
         final List<Balloon> all = findAll();
-        for (Balloon balloon: all
+        for (Balloon balloon : all
         ) {
             if (balloon.getSerial() == id) return true;
         }
@@ -99,6 +99,7 @@ public class BalloonRepository {
             throw new RuntimeException(e);
         }
     }
+
     private String convertToCSV(Balloon balloon) {
 
         String[] data = new String[]{
@@ -112,6 +113,7 @@ public class BalloonRepository {
                 .map(this::escapeSpecialCharacters)
                 .collect(Collectors.joining(","));
     }
+
     private String escapeSpecialCharacters(String data) {
         String escapedData = data.replaceAll("\\R", " ");
         if (data.contains(",") || data.contains("\"") || data.contains("'")) {

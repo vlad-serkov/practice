@@ -13,7 +13,7 @@ import java.util.Map;
 @RestController
 @AllArgsConstructor
 @RequestMapping("balloons")
-public class BalloonController  {
+public class BalloonController {
     private BalloonService balloonService;
 
 
@@ -32,8 +32,9 @@ public class BalloonController  {
     public String deleteById(@PathVariable int serial) throws SerialNotFoundException {
         return balloonService.deleteById(serial);
     }
+
     @PutMapping("/{serial}")
-    public String update(@PathVariable int serial, @RequestBody Balloon balloon ) throws SerialNotFoundException {
+    public String update(@PathVariable int serial, @RequestBody Balloon balloon) throws SerialNotFoundException {
         return balloonService.update(serial, balloon);
     }
 
@@ -48,7 +49,7 @@ public class BalloonController  {
     }
 
     @PutMapping("/{serial}/set-substance")
-    public String setSubstance(@PathVariable int serial, @RequestBody Map<String,String> map) throws SerialNotFoundException {
+    public String setSubstance(@PathVariable int serial, @RequestBody Map<String, String> map) throws SerialNotFoundException {
         return balloonService.setSubstance(serial, map.get("substance"), Double.parseDouble(map.get("pressure")));
     }
 
@@ -58,7 +59,7 @@ public class BalloonController  {
     }
 
 
-    }
+}
 
 
 
